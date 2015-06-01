@@ -1,0 +1,9 @@
+{
+  "name": "sque",
+  "description": "Simple que manager and client",
+  "version": "0.0.1",
+  "main": "./lib/index",
+  "dependencies": {
+    "redis": "~0.12.1"
+  }
+}
