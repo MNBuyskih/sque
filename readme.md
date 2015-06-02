@@ -23,7 +23,6 @@
 
 - `constructor(queName, options)` - создает новую очередь с именем `queName` (или подключается к существующей) при создании экземпляра класса. В `options.redis` можно передать параметры подключения к редису.
 - `push(params)` - добавить задачу. `params` - хеш объект с данными задачи. Будет сохранен в хранилище как JSON.
-- `publish([id])` - публикует задачу добавляя к ней необязательный параметр __id__, по которому эту задачу может идентифицировать рабочий сервер, запросивший задачу.
 
 Кроме этого основной сервер должен постоянно слушать сообщения о свободных серверах и если есть доступные задачи - отдавать их в работу.
 
@@ -33,3 +32,36 @@
 
 - `constructor(queName, options)` - подключается к очереди `queName`. В `options` можно передать параметры подключения к редису.
 - `iAmFree([id], done(error, jobData))` - публикует сообщение для основного сервера, запрашивая новую задачу. Необязательный параметр __id__ позволит идентифицировать задачу.
+
+# Пример:
+
+```js
+var sque = require('sque'),
+    manager = new sque.manager('queName'),
+    client1 = new sque.client('queName'),
+    client2 = new sque.client('queName');
+
+// Добавляем задачи в менеджер.
+manager.push({
+    email: 'test1@mail.org'
+});
+manager.push({
+    email: 'test2@mail.org'
+});
+manager.push({
+    email: 'test3@mail.org'
+});
+
+// Первая задача
+client1.iAmFree(function (error, data) {
+    console.log(data.email === 'test1@mail.org');
+});
+// Вторая задача
+client2.iAmFree(function (error, data) {
+    console.log(data.email === 'test2@mail.org');
+});
+// Третья задача
+client1.iAmFree(function (error, data) {
+    console.log(data.email === 'test3@mail.org');
+});
+```
