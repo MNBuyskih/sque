@@ -5,7 +5,8 @@ var assert = require('chai').assert,
     Manager = require('../lib/manager.js'),
     r = require('redis'),
     redis = r.createClient(),
-    fail = require('fail.js');
+    fail = require('fail.js'),
+    fixtures = require('./fixtures');
 
 describe('Manager', function () {
     var m = new Manager('test'),
@@ -13,21 +14,7 @@ describe('Manager', function () {
         client;
 
     beforeEach(function (done) {
-        redis.del('sq:test', function () {
-            m.push('a');
-            m.push('b');
-            m.push('c');
-            m.push('d');
-
-            m.push({
-                a: 0,
-                b: 1,
-                c: 2,
-                d: 3
-            }, done);
-
-        });
-
+        fixtures.delAndPush(m, done);
     });
 
     describe('push', function () {

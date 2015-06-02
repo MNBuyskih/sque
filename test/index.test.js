@@ -15,4 +15,10 @@ describe('index', function () {
             assert.isFunction(index.manager);
         });
     });
+
+    describe('.client', function () {
+        it('should be a function', function () {
+            assert.isFunction(index.client);
+        });
+    });
 });
