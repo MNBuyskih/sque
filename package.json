@@ -1,15 +1,21 @@
 {
-    "name": "sque",
-    "description": "Simple que manager and client",
-    "version": "0.0.1",
-    "main": "./lib/index",
-    "dependencies": {
-        "redis": "~0.12.1",
-        "underscore": "~1.8.3",
-        "fail": "git://github.com/MNBuyskih/fail.js"
-    },
-    "dev-dependencies": {
-        "chai": "~2.3.0",
-        "mocha": "~2.2.5"
-    }
+  "name": "sque",
+  "description": "Simple que manager and client",
+  "version": "0.0.1",
+  "main": "./lib/index",
+  "repository": "git://github.com/MNBuyskih/sque.git",
+  "dependencies": {
+    "redis": "~0.12.1",
+    "fail": "git://github.com/MNBuyskih/fail.js",
+    "lodash.omit": "~3.1.0",
+    "lodash.defaults": "~3.1.1",
+    "lodash.isfunction": "~3.0.5",
+    "lodash.isstring": "~3.0.1",
+    "lodash.flatten": "~3.0.2",
+    "lodash.compact": "~3.0.0"
+  },
+  "devDependencies": {
+    "chai": "~2.3.0",
+    "mocha": "~2.2.5"
+  }
 }
