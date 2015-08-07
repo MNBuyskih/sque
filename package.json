@@ -1,7 +1,7 @@
 {
   "name": "sque",
   "description": "Simple que manager and client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./lib/index",
   "repository": "git://github.com/MNBuyskih/sque.git",
   "dependencies": {
